@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RailsTest</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container">
+       <p class="alert"><%= alert %></p>
+       <%= link_to "sign out", destroy_user_session_path, data: { method: "delete"} %>
+<%= yield %>
+</div>
+
+</body>
+</html>
