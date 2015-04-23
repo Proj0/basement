@@ -9,16 +9,20 @@
   <strong>Body:</strong>
   <%= @post.body %>
 </p>
-
+<%= @post.author.email if @post.author %>
 <%= action_links %>
 
 <h3>Replys:</h3>
 <ul>
-	<% @post.replies.each do |reply|%>
-	<li><%= reply.body %></li>
+	<% @pages.each do |reply|%>
+	<li>
+	<strong> <%= reply.author.try(:email) or "Anonymous" %>:</strong>
+	<%= reply.body %>
+	</li>
 	<% end -%>
+
 </ul>
-	
+	<center class = "centers"><%= paginate @pages %></center>
 	<%= form_for Reply.new, url: reply_post_path do |f|%>
 
 	<%= f.text_area :body %>

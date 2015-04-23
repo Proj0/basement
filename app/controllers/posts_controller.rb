@@ -1,10 +1,13 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :reply]
   before_action :authenticate_user!
+  # paginates_per 10
+  load_and_authorize_resource
 
   # GET /posts
   def index
     @posts = Post.all.includes(:replies)
+    @pages = @posts.page(params[:page]).per(10)
     respond_to do |format|  
       format.html
       format.json do
@@ -25,10 +28,13 @@ class PostsController < ApplicationController
   def show
     @post.Clicks +=1
     @post.save
+    @pages = @post.replies.page(params[:page]).per(10)
   end
 
   def reply
-    @post.replies.create(params[:reply].permit(:body))
+    reply = @post.replies.create(params[:reply].permit(:body))
+    reply.author = current_user
+    reply.save
     redirect_to :back, notice: "reply done"
   end
 
@@ -45,6 +51,7 @@ class PostsController < ApplicationController
   # POST /posts
   def create
     @post = Post.new(post_params)
+    @post.author = current_user
 
     if @post.save
       redirect_to @post, notice: 'Post was successfully created.'

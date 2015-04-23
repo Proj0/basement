@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, path: "auth"
   post "posts/:id/reply" => "posts#reply"
+
+  resources :users
+
   resources :posts do
     collection do
       get "abc"
