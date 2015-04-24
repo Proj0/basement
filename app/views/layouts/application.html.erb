@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RailsTest</title>
+  <title>一个神奇的网站</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -14,11 +14,9 @@
 <% if alert %>
 <p class="alert alert-danger"><%= alert %></p>
 <% end -%>
-
-       
        <%= current_user.email if current_user %>
-       <%= link_to "Sign Out", destroy_user_session_path, data: { method: "delete"} %> | 
-       <%= link_to "Setting", edit_user_registration_path %>
+       <%= link_to "登出", destroy_user_session_path, data: { method: "delete"} %> | 
+       <%= link_to "设置", edit_user_registration_path %>
 <%= yield %>
 </div>
 

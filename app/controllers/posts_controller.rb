@@ -35,7 +35,7 @@ class PostsController < ApplicationController
     reply = @post.replies.create(params[:reply].permit(:body))
     reply.author = current_user
     reply.save
-    redirect_to :back, notice: "reply done"
+    redirect_to :back, notice: "回复已成功添加。"
   end
 
 
@@ -54,7 +54,7 @@ class PostsController < ApplicationController
     @post.author = current_user
 
     if @post.save
-      redirect_to @post, notice: 'Post was successfully created.'
+      redirect_to @post, notice: '文章已成功发布。'
     else
       render :new
     end
@@ -63,7 +63,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: 'Post was successfully updated.'
+      redirect_to @post, notice: '文章已成功更新。'
     else
       render :edit
     end
@@ -72,7 +72,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   def destroy
     @post.destroy
-    redirect_to posts_url, notice: 'Post was successfully destroyed.'
+    redirect_to posts_url, notice: '文章已成功删除。'
   end
 
   private

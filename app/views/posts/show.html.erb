@@ -1,22 +1,26 @@
+<body class="container">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
+<h1>
   <%= @post.title %>
-</p>
+</h1>
 
-<p>
-  <strong>Body:</strong>
+<article>
+	<p>这是一个测试帖子。</p>
+	<p>
+		<strong>粗体</strong>与<em>强调</em>文字的显示是这样的。
+	</p>
   <%= @post.body %>
-</p>
+</article>
 <%= @post.author.email if @post.author %>
+<!--下面这货在post_helper.rb里可以修改文字，但怎么改其前端风格还需要考虑一下-->
 <%= action_links %>
 
-<h3>Replys:</h3>
+<h3>回复：</h3>
 <ul>
 	<% @pages.each do |reply|%>
 	<li>
-	<strong> <%= reply.author.try(:email) or "Anonymous" %>:</strong>
+	<strong> <%= reply.author.try(:email) or "匿名用户" %>:</strong>
 	<%= reply.body %>
 	</li>
 	<% end -%>
@@ -25,7 +29,9 @@
 	<center class = "centers"><%= paginate @pages %></center>
 	<%= form_for Reply.new, url: reply_post_path do |f|%>
 
-	<%= f.text_area :body %>
-	<%= f.submit %>
+	<div><%= f.text_area :body, class: 'form-control' %></div>
+	<%= f.submit '添加回复', class: 'btn btn-default' %> 
+	<!--That's how you style a submit button-->
 
 	<% end -%>	
+</body>
