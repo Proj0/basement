@@ -3,7 +3,7 @@ class Post
   include Mongoid::Timestamps
 
   field :title, type: String
-  field :body, type: String
+  field :body, type: String, default: ""
   field :Clicks, type: Integer, default: 0
 
  scope :hottest, proc {where(:Clicks.gt => 5).desc}
