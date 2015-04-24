@@ -11,6 +11,7 @@ class Ability
       else
         can :read, :all
         can :reply, Post
+        can :create, Post
       end
     #
     # The first argument to `can` is the action you are giving the user
