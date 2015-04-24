@@ -10,4 +10,6 @@ class Reply
 	after_create do 
 		post.inc(:replies_count => 1)
 	end
+
+	belongs_to :author, class_name: "User"
 end

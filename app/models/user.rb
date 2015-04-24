@@ -33,4 +33,12 @@ class User
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
+  VALID_ROLES = [:admin, :everyone]
+  field :role, type: Symbol, default: :everyone
+  validates_inclusion_of :role, in: VALID_ROLES
+  def admin?
+    :role == :admin
+  end
+  has_many :posts
+  has_many :replies
 end
