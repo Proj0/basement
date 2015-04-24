@@ -1,5 +1,5 @@
 <h1>Listing Posts</h1>
-
+<!-- 
 <table class="table">
   <thead>
     <tr>
@@ -10,18 +10,23 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
+ -->
   <tbody>
     <% @pages.each do |post| %>
-      <tr>
+      <br>
         <td><%= post.title %></td>
+      </br>
+      <br>
         <td><%= post.body %></td>
+      </br>
+<!--    
         <td><%= post.Clicks %></td>
-        <td><%= post.replies_count %></td>
+        <td><%= post.replies_count %></td> 
+-->
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      </br>
     <% end %>
   </tbody>
 </table>
