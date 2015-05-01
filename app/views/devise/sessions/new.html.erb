@@ -1,26 +1,24 @@
-<h2>Log in</h2>
+<h2>登录</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<form class="form-inline">
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputEmail3">电子邮件</label>
+    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="输入电子邮件地址">
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputPassword3">密码</label>
+    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="输入密码">
   </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"> 记住我
+    </label>
   </div>
+  <button type="submit" class="btn btn-default">登录</button>
+</form>
+
+
 <% end %>
 
 <%= render "devise/shared/links" %>
