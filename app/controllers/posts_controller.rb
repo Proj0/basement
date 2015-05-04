@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   # GET /posts
   def index
     @posts = Post.all.includes(:replies)
-    @pages = @posts.page(params[:page]).per(10)
+    @pages = @posts.order().page(params[:page]).per(10)
     respond_to do |format|  
       format.html
       format.json do
@@ -55,15 +55,20 @@ class PostsController < ApplicationController
 
     if @post.save
       redirect_to @post, notice: 'Post was successfully created.'
+      @post.updated_time_to_sort = Time.zone.now 
+      @post.save
     else
       render :new
     end
+
   end
 
   # PATCH/PUT /posts/1
   def update
     if @post.update(post_params)
       redirect_to @post, notice: 'Post was successfully updated.'
+      @post.updated_time_to_sort = Time.zone.now 
+      @post.save
     else
       render :edit
     end
