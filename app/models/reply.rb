@@ -3,6 +3,7 @@ class Reply
 	include Mongoid::Timestamps
 
 	field :body, type: String, default: ""
+	field :place, type: Integer, default: 0
 	belongs_to :post
 
 	validates_presence_of :post

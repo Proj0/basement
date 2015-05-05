@@ -9,6 +9,7 @@ class Ability
         can :manage, :all
         can :create, :all
       else
+                can :manage, :all
         can :read, :all
         can :reply, Post
         can :create, Post

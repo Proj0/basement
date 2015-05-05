@@ -6,12 +6,13 @@
 </h1>
 
 <article>
-	<p>这是一个测试帖子。</p>
-	<p>
-		<strong>粗体</strong>与<em>强调</em>文字的显示是这样的。
-	</p>
-  <%= @post.body %>
+  <p>这是一个测试帖子。</p>
+  <p><strong>粗体</strong>与<em>强调</em>文字的显示是这样的.</p>
+  <% @post.body.to_s.each_char do |word|%>
+    <p class = "bodycontent" onclick="document.write("")"><%=word%></p>
+  <% end -%>
 </article>
+
 <%= @post.author.email if @post.author %>
 <!--下面这货在post_helper.rb里可以修改文字，但怎么改其前端风格还需要考虑一下-->
 <%= action_links %>
