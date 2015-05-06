@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   # GET /posts
   def index
     @posts = Post.all.includes(:replies)
-    @pages = @posts.order().page(params[:page]).per(10)
+    @pages = Post.all.order().page(params[:page]).per(10)
     respond_to do |format|  
       format.html
       format.json do
