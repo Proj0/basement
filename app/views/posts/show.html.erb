@@ -16,7 +16,7 @@ id.innerHTML="谢谢!";
   <p>这是一个测试帖子。</p>
   <p><strong>粗体</strong>与<em>强调</em>文字的显示是这样的.</p>
   <% @post.body.to_s.each_char do |word|%>
-    <button class = "bodycontent" onclick="document.createElement("form")"><%=word%></button>
+    <button class = "bodycontent" onclick= "document.write("form")"><%=word%></button>
   <% end -%>
 </article>
 

@@ -9,5 +9,6 @@ class Post
   field :replies_count, type: Integer, default: 0
   field :updated_time_to_sort, type: String, default: "10"
   has_many :replies, dependent: :destroy
+  has_many :paragraphs
   belongs_to :author, class_name: "User"
 end
